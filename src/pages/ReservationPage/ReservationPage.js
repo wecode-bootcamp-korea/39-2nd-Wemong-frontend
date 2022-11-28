@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ReservationPage = () => {
-  return <></>;
+  return <div>MainPage</div>;
 };
 
 export default ReservationPage;

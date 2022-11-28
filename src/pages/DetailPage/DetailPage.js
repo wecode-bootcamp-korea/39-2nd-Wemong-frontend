@@ -1,7 +1,7 @@
 import React from 'react';
 
 const DetailPage = () => {
-  return <></>;
+  return <div>MainPage</div>;
 };
 
 export default DetailPage;
