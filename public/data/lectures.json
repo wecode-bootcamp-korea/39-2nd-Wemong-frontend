@@ -1,0 +1,80 @@
+[
+  {
+    "lectureid": "1",
+    "lectureTitle": "혼자서도 잘해요! 김수정과 함께하는 혼밥 요리교실",
+    "lecturerName": "김수정",
+    "categoryId": 1,
+    "subCategoryId": 1,
+    "price": 45000,
+    "images": [
+      "../images/kimhojoon/wemongLecture.jpeg",
+      "../images/kimhojoon/wemongLecture.jpeg",
+      "../images/kimhojoon/wemongLecture.jpeg"
+    ]
+  },
+  {
+    "lectureid": "2",
+    "lectureTitle": "혼자서도 잘해요! 김수정과 함께하는 혼밥 요리교실",
+    "lecturerName": "김수정",
+    "categoryId": 1,
+    "subCategoryId": 1,
+    "price": 45000,
+    "images": [
+      "../images/kimhojoon/wemongLecture.jpeg",
+      "../images/kimhojoon/wemongLecture.jpeg",
+      "../images/kimhojoon/wemongLecture.jpeg"
+    ]
+  },
+  {
+    "lectureid": "3",
+    "lectureTitle": "혼자서도 잘해요! 김수정과 함께하는 혼밥 요리교실",
+    "lecturerName": "김수정",
+    "categoryId": 1,
+    "subCategoryId": 1,
+    "price": 45000,
+    "images": [
+      "../images/kimhojoon/wemongLecture.jpeg",
+      "../images/kimhojoon/wemongLecture.jpeg",
+      "../images/kimhojoon/wemongLecture.jpeg"
+    ]
+  },
+  {
+    "lectureid": "4",
+    "lectureTitle": "혼자서도 잘해요! 김수정과 함께하는 혼밥 요리교실",
+    "lecturerName": "김수정",
+    "categoryId": 1,
+    "subCategoryId": 1,
+    "price": 45000,
+    "images": [
+      "../images/kimhojoon/wemongLecture.jpeg",
+      "../images/kimhojoon/wemongLecture.jpeg",
+      "../images/kimhojoon/wemongLecture.jpeg"
+    ]
+  },
+  {
+    "lectureid": "5",
+    "lectureTitle": "혼자서도 잘해요! 김수정과 함께하는 혼밥 요리교실",
+    "lecturerName": "김수정",
+    "categoryId": 1,
+    "subCategoryId": 1,
+    "price": 45000,
+    "images": [
+      "../images/kimhojoon/wemongLecture.jpeg",
+      "../images/kimhojoon/wemongLecture.jpeg",
+      "../images/kimhojoon/wemongLecture.jpeg"
+    ]
+  },
+  {
+    "lectureid": "6",
+    "lectureTitle": "혼자서도 잘해요! 김수정과 함께하는 혼밥 요리교실",
+    "lecturerName": "김수정",
+    "categoryId": 1,
+    "subCategoryId": 1,
+    "price": 45000,
+    "images": [
+      "../images/kimhojoon/wemongLecture.jpeg",
+      "../images/kimhojoon/wemongLecture.jpeg",
+      "../images/kimhojoon/wemongLecture.jpeg"
+    ]
+  }
+]
