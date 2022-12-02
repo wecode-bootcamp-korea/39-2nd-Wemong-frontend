@@ -30,12 +30,14 @@ function Footer() {
           <FooterDev>
             <h3>Developer</h3>
             <DevEmail>
-              {FOOTER_MEMBER.map(({ id, name, img }) => {
+              {FOOTER_MEMBER.map(({ id, name, img, github }) => {
                 return (
-                  <UlLi key={id}>
-                    <Img src={img} alt="member" />
-                    {name}
-                  </UlLi>
+                  <Github href={github} target="_blank" key={id}>
+                    <UlLi key={id}>
+                      <Img src={img} alt="member" />
+                      <Name>{name}</Name>
+                    </UlLi>
+                  </Github>
                 );
               })}
             </DevEmail>
@@ -53,7 +55,7 @@ function Footer() {
 
 const Sooter = styled.footer`
   width: 100%;
-  background-color: #111;
+  background-color: #ffd400;
 `;
 
 const FooterInner = styled.div`
@@ -77,6 +79,7 @@ const FooterList = styled.div`
 `;
 
 const H3 = styled.h3`
+  border-bottom: 2px solid white;
   margin-bottom: 30px;
   color: #fff;
   font-size: 1.6rem;
@@ -85,7 +88,7 @@ const H3 = styled.h3`
 
 const Li = styled.li`
   margin-bottom: 20px;
-  color: #ddd;
+  color: white;
   font-size: 1.5rem;
   cursor: pointer;
 `;
@@ -103,8 +106,10 @@ const FooterDev = styled.div`
 `;
 const DevEmail = styled.ul`
   display: flex;
-  width: 40%;
+  width: 60%;
   margin-top: 20px;
+  justify-content: space-around;
+  align-items: center;
 `;
 
 const UlLi = styled.li`
@@ -127,11 +132,19 @@ const Img = styled.img`
   border-radius: 50%;
 `;
 
+const Name = styled.div`
+  margin-left: -10px;
+  width: 60px;
+  color: white;
+`;
+
 const License = styled.p`
-  border-top: 1px solid #ddd;
-  color: #ddd;
+  border-top: 1px solid white;
   font-size: 1.2rem;
   line-height: 22px;
+  color: white;
 `;
+
+const Github = styled.a``;
 
 export default Footer;
