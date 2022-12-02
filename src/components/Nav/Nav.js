@@ -1,37 +1,67 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import Navdropdown from './Navdropdown';
+import NavList from './NavList';
 const Nav = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
-    <NavBody>
-      <Container>
-        <NavTop>
-          <Logo>WeMong</Logo>
-          <SearchWrap>
-            <SearchInput placeholder="강의를 검색해 보세요"></SearchInput>
-            <SearchIcon>
-              <i class="fa-solid fa-magnifying-glass"></i>
-            </SearchIcon>
-          </SearchWrap>
-          <NavTopRight>
-            <Login>로그인</Login>
-          </NavTopRight>
-        </NavTop>
-        <NavBottom>
-          <NavBottomWrap>
-            <Exercise>운동</Exercise>
-            <Cooking>요리</Cooking>
-            <It>IT</It>
-          </NavBottomWrap>
-        </NavBottom>
-      </Container>
-    </NavBody>
+    <DropContainer>
+      <NavBody>
+        <Container>
+          <NavTop onMouseEnter={() => setMenuOpen(false)}>
+            <Logo>WeMong</Logo>
+            <SearchWrap>
+              <SearchInput placeholder="강의를 검색해 보세요"></SearchInput>
+              <SearchIcon>
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </SearchIcon>
+            </SearchWrap>
+            <NavTopRight>
+              <Login>로그인</Login>
+            </NavTopRight>
+          </NavTop>
+          <NavBottom>
+            <NavBottomWrap onMouseEnter={() => setMenuOpen(true)}>
+              <Cooking>요리</Cooking>
+              <Study>입시</Study>
+              <It>IT</It>
+            </NavBottomWrap>
+          </NavBottom>
+        </Container>
+      </NavBody>
+      {menuOpen && (
+        <NavDropWrap onMouseLeave={() => setMenuOpen(false)}>
+          {/* {NavList.map(list => {return
+          ()})} */}
+          <CookingMenu>
+            <KoreanFood>한식</KoreanFood>
+            <ChineseFood>중식</ChineseFood>
+            <EuropeanFood>양식</EuropeanFood>
+          </CookingMenu>
+          <StudyMenu>
+            <Korean>국어</Korean>
+            <English>영어</English>
+            <Mathematics>수학</Mathematics>
+          </StudyMenu>
+          <ItMenu>
+            <Programming>프로그래밍</Programming>
+            <Video>영상편집</Video>
+            <Mos>MOS</Mos>
+          </ItMenu>
+        </NavDropWrap>
+      )}
+    </DropContainer>
   );
 };
 
 export default Nav;
 
+const DropContainer = styled.div``;
+
 const NavBody = styled.div`
   border-bottom: 1px solid #eceaeb;
+  margin-bottom: 1px;
   z-index: 100;
 `;
 
@@ -132,7 +162,7 @@ const NavBottomWrap = styled.div`
   justify-content: center;
 `;
 
-const Exercise = styled.button`
+const Study = styled.button`
   background-color: white;
   cursor: pointer;
   border: none;
@@ -181,4 +211,66 @@ const It = styled.button`
   padding: 0 20px;
   color: #303441;
   padding-bottom: 5px;
+`;
+
+const NavDropWrap = styled.div`
+  width: 300px;
+  margin: 0 auto;
+
+  display: flex;
+  /* display: ${props => (props.menuOpen ? `flex` : `none`)}; */
+`;
+
+const CookingMenu = styled.div`
+  width: 100px;
+  text-align: center;
+  cursor: pointer;
+`;
+
+const KoreanFood = styled.div`
+  margin: auto;
+`;
+
+const ChineseFood = styled.div`
+  margin: auto;
+`;
+
+const EuropeanFood = styled.div`
+  margin: auto;
+`;
+
+const StudyMenu = styled.div`
+  width: 100px;
+  text-align: center;
+  cursor: pointer;
+`;
+
+const Korean = styled.div`
+  margin: auto;
+`;
+
+const English = styled.div`
+  margin: auto;
+`;
+
+const Mathematics = styled.div`
+  margin: auto;
+`;
+
+const ItMenu = styled.div`
+  width: 100px;
+  text-align: center;
+  cursor: pointer;
+`;
+
+const Programming = styled.div`
+  margin: auto;
+`;
+
+const Video = styled.div`
+  margin: auto;
+`;
+
+const Mos = styled.div`
+  margin: auto;
 `;
