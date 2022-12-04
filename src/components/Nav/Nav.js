@@ -6,52 +6,58 @@ const Nav = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <DropContainer>
-      <NavBody>
-        <Container>
-          <NavTop onMouseEnter={() => setMenuOpen(false)}>
-            <Logo>WeMong</Logo>
-            <SearchWrap>
-              <SearchInput placeholder="강의를 검색해 보세요"></SearchInput>
-              <SearchIcon>
-                <i class="fa-solid fa-magnifying-glass"></i>
-              </SearchIcon>
-            </SearchWrap>
-            <NavTopRight>
-              <Login>로그인</Login>
-            </NavTopRight>
-          </NavTop>
-          <NavBottom>
-            <NavBottomWrap onMouseEnter={() => setMenuOpen(true)}>
-              <Cooking>요리</Cooking>
-              <Study>입시</Study>
-              <It>IT</It>
-            </NavBottomWrap>
-          </NavBottom>
-        </Container>
-      </NavBody>
-      {menuOpen && (
-        <NavDropWrap onMouseLeave={() => setMenuOpen(false)}>
-          {/* {NavList.map(list => {return
+    <>
+      <DropContainer>
+        <NavBody>
+          <Container>
+            <NavTop onMouseEnter={() => setMenuOpen(false)}>
+              <Logo>WeMong</Logo>
+              <SearchWrap>
+                <SearchInput placeholder="강의를 검색해 보세요"></SearchInput>
+                <SearchIcon>
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                </SearchIcon>
+              </SearchWrap>
+              <NavTopRight>
+                <Login>로그인</Login>
+              </NavTopRight>
+            </NavTop>
+            <NavBottom>
+              <NavBottomWrap onMouseEnter={() => setMenuOpen(true)}>
+                <Cooking>요리</Cooking>
+                <Study>입시</Study>
+                <It>IT</It>
+              </NavBottomWrap>
+            </NavBottom>
+          </Container>
+        </NavBody>
+        {menuOpen && (
+          <NavDropWrap onMouseLeave={() => setMenuOpen(false)}>
+            {/* {NavList.map(list => {return
           ()})} */}
-          <CookingMenu>
-            <KoreanFood>한식</KoreanFood>
-            <ChineseFood>중식</ChineseFood>
-            <EuropeanFood>양식</EuropeanFood>
-          </CookingMenu>
-          <StudyMenu>
-            <Korean>국어</Korean>
-            <English>영어</English>
-            <Mathematics>수학</Mathematics>
-          </StudyMenu>
-          <ItMenu>
-            <Programming>프로그래밍</Programming>
-            <Video>영상편집</Video>
-            <Mos>MOS</Mos>
-          </ItMenu>
-        </NavDropWrap>
-      )}
-    </DropContainer>
+            <CookingMenu>
+              <KoreanFood>한식</KoreanFood>
+              <ChineseFood>중식</ChineseFood>
+              <EuropeanFood>양식</EuropeanFood>
+            </CookingMenu>
+            <StudyMenu>
+              <Korean>국어</Korean>
+              <English>영어</English>
+              <Mathematics>수학</Mathematics>
+            </StudyMenu>
+            <ItMenu>
+              <Programming>프로그래밍</Programming>
+              <Video>영상편집</Video>
+              <Mos>MOS</Mos>
+            </ItMenu>
+          </NavDropWrap>
+        )}
+      </DropContainer>
+      <Carousel>
+        <CarouselImg></CarouselImg>
+      </Carousel>
+      <FilterContainer></FilterContainer>
+    </>
   );
 };
 
@@ -71,6 +77,7 @@ const Container = styled.div`
   height: 123px;
   width: 1107px;
   margin: 0 auto;
+  position: relative;
 `;
 
 const NavTop = styled.div`
@@ -215,8 +222,12 @@ const It = styled.button`
 
 const NavDropWrap = styled.div`
   width: 300px;
+  z-index: 20;
   margin: 0 auto;
-
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  top: 148px;
   display: flex;
   /* display: ${props => (props.menuOpen ? `flex` : `none`)}; */
 `;
@@ -273,4 +284,24 @@ const Video = styled.div`
 
 const Mos = styled.div`
   margin: auto;
+`;
+
+const Carousel = styled.div`
+  margin: 0 auto;
+  overflow: hidden;
+  width: 1107px;
+  height: 300px;
+  border: 1px solid black;
+  margin-bottom: 20px;
+`;
+const CarouselImg = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`;
+
+const FilterContainer = styled.div`
+  width: 1107px;
+  margin: 0 auto;
+  border: 1px solid black;
 `;
