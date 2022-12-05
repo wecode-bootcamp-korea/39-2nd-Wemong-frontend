@@ -53,10 +53,10 @@ const Nav = () => {
           </NavDropWrap>
         )}
       </DropContainer>
-      <Carousel>
+      {/* <Carousel>
         <CarouselImg></CarouselImg>
       </Carousel>
-      <FilterContainer></FilterContainer>
+      <FilterContainer></FilterContainer> */}
     </>
   );
 };
@@ -286,22 +286,22 @@ const Mos = styled.div`
   margin: auto;
 `;
 
-const Carousel = styled.div`
-  margin: 0 auto;
-  overflow: hidden;
-  width: 1107px;
-  height: 300px;
-  border: 1px solid black;
-  margin-bottom: 20px;
-`;
-const CarouselImg = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-`;
+// const Carousel = styled.div`
+//   margin: 0 auto;
+//   overflow: hidden;
+//   width: 1107px;
+//   height: 300px;
+//   border: 1px solid black;
+//   margin-bottom: 20px;
+// `;
+// const CarouselImg = styled.img`
+//   width: 100%;
+//   height: 100%;
+//   object-fit: cover;
+// `;
 
-const FilterContainer = styled.div`
-  width: 1107px;
-  margin: 0 auto;
-  border: 1px solid black;
-`;
+// const FilterContainer = styled.div`
+//   width: 1107px;
+//   margin: 0 auto;
+//   border: 1px solid black;
+// `;
