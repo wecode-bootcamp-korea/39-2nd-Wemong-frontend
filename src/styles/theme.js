@@ -7,5 +7,4 @@ const theme = {
   hoverGrey: '#DBDBDB',
   kmongYellow: '#ffd400',
 };
-
 export default theme;

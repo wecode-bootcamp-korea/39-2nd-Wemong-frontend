@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Main from './pages/MainPage/MainPage';
+import MainPage from './pages/MainPage/MainPage';
 import LoginPage from './pages/LoginPage/LoginPage';
 import SignUpPage from './pages/SignUpPage/SignupPage';
 import DetailPage from './pages/DetailPage/DetailPage';
@@ -8,6 +8,8 @@ import ReservationPage from './pages/ReservationPage/ReservationPage';
 import MyPage from './pages/MyPage/MyPage';
 import Nav from './components/Nav/Nav';
 import Footer from './components/Footer/Footer';
+import MainPage from './pages/MainPage/MainPage';
+import KakaoLogin from './pages/LoginPage/KakaoLogin';
 
 const Router = () => {
   return (
@@ -20,6 +22,7 @@ const Router = () => {
         <Route path="/detail/:id" element={<DetailPage />} />
         <Route path="/reservation" element={<ReservationPage />} />
         <Route path="/mypage" element={<MyPage />} />
+        <Route path="/KakaoLogin" element={<KakaoLogin />} />
       </Routes>
       <Footer />
     </BrowserRouter>
