@@ -1,0 +1,19 @@
+{
+  "data": [
+    {
+      "images": "aimage",
+      "lectureDate": [
+        {
+          "isReserved": 0,
+          "lectureDate": "2022, 12, 23",
+          "lectureTimeOptionId": 1
+        }
+      ],
+      "lectureId": 1,
+      "lectureText": "위슐랭 스타 셰프 김호준의 비밀 레시피 훔쳐오기",
+      "lectureTitle": "위슐랭 3스타 쉐프 김호준의 비밀 레시피",
+      "lecturerName": "Georgeta",
+      "price": "70000"
+    }
+  ]
+}
