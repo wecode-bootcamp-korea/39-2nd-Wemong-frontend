@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { NavCategoryList, NavList } from './NavList';
-import { Link } from 'react-router-dom';
 // import Navdropdown from './Navdropdown';
 // import NavList from './NavList';
 const Nav = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const token = localStorage.getItem('token');
 
   return (
     <>
@@ -14,7 +14,7 @@ const Nav = () => {
         <NavBody>
           <Container>
             <NavTop onMouseEnter={() => setMenuOpen(false)}>
-              <Logo>WeMong</Logo>
+              <Logo href={'/lectures'}>WeMong</Logo>
               <SearchWrap>
                 <SearchInput placeholder="강의를 검색해 보세요"></SearchInput>
                 <SearchIcon>
@@ -22,7 +22,19 @@ const Nav = () => {
                 </SearchIcon>
               </SearchWrap>
               <NavTopRight>
-                <Login>로그인</Login>
+                {token ? (
+                  <Login
+                    href={'/login'}
+                    onClick={() => {
+                      localStorage.removeItem('token');
+                      window.location.reload();
+                    }}
+                  >
+                    로그아웃
+                  </Login>
+                ) : (
+                  <Login href={'/login'}>로그인</Login>
+                )}
               </NavTopRight>
             </NavTop>
             <NavBottom>
@@ -65,7 +77,7 @@ const Nav = () => {
                   </ul>
                 );
               })}
-              {console.log(NavList)}
+              {/* {console.log(NavList)} */}
               {/* <KoreanFood>한식</KoreanFood>
               <ChineseFood>중식</ChineseFood>
               <EuropeanFood>양식</EuropeanFood> */}
@@ -122,7 +134,8 @@ const NavTop = styled.div`
   position: relative;
 `;
 
-const Logo = styled.button`
+const Logo = styled.a`
+  color: black;
   display: block;
   font-size: 1.6rem;
   font-weight: 600;
@@ -167,15 +180,19 @@ const SearchIcon = styled.div`
 const NavTopRight = styled.div`
   display: flex;
   align-items: center;
+  justify-content: center;
 `;
 
-const Login = styled.button`
+const Login = styled.a`
+  color: black;
   display: block;
   position: absolute;
   height: 40px;
   right: 0;
-  font-size: 1rem;
-  padding: 3px 28px;
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 900;
+  padding: 12px 28px 3px 28px;
   border: none;
   background-color: rgb(245, 212, 0);
   cursor: pointer;
@@ -263,7 +280,7 @@ const NavDropWrap = styled.div`
   position: fixed;
 
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-53%, -50%);
   top: 190px;
   display: flex;
   background-color: white;
@@ -283,6 +300,7 @@ const KoreanFood = styled.a`
   display: block;
   /* margin: auto; */
   padding-bottom: 20px;
+  color: black;
 `;
 
 const ChineseFood = styled.div`

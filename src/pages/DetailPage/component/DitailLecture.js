@@ -8,7 +8,7 @@ const DitailLecture = props => {
       <LecturePriceBody ref={props.categoryRef}>
         <PriceText>가격정보</PriceText>
         <PriceBody>
-          <Price>70,000원</Price>
+          <Price>{props.price}</Price>
           <SinupCoupon>
             <Text>
               지금 회원가입하면 <SText>10만원</SText> 쿠폰팩을 드려요!

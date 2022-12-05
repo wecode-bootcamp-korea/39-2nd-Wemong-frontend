@@ -45,7 +45,7 @@ const ReservationSuccess = () => {
 
     let options = {
       method: 'POST',
-      url: 'http://10.58.52.211:3000/checkout',
+      url: 'http://10.58.52.222:3000/checkout',
       headers: {
         Authorization:
           'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImlhdCI6MTY3MDQ2MjY4NywiZXhwIjoxNjcwNjM1NDg3fQ.dCuzuNGsP4Z03NdXIZHmtrH21n4sf2tH_aGz70gxoYE',
@@ -71,7 +71,7 @@ const ReservationSuccess = () => {
   return (
     <ReservationSuccessContainer>
       <PaymentSuccessMessage>결제에 성공하였습니다.</PaymentSuccessMessage>
-      <Link className="link" to="/">
+      <Link className="link" to="/lectures">
         홈으로
       </Link>
     </ReservationSuccessContainer>

@@ -1,26 +1,65 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { format } from 'date-fns';
 import { DayPicker, Row, RowProps } from 'react-day-picker';
 import 'react-day-picker/dist/style.css';
 import ko from 'date-fns/locale/ko';
-import { differenceInCalendarDays } from 'date-fns';
 
-function isPastDate(date) {
-  return differenceInCalendarDays(date, new Date()) < 0;
-}
+// function getAllDaysInMonth(year, month) {
+//   const date = new Date(year, month, 1);
+//   const dates = [];
+//   while (date.getMonth() === month) {
+//     dates.push(new Date(date).toISOString().slice(0, 10).replaceAll('-', ','));
+//     date.setDate(date.getDate() + 1);
+//   }
+//   return dates;
+// }
+// const date = new Date('2022-12-01');
+// const december = getAllDaysInMonth(date.getFullYear(), date.getMonth());
+// const fromBack = dayData.map(obj => obj.lectureDate);
 
-function OnlyFutureRow(props) {
-  const isPastRow = props.dates.every(isPastDate);
-  if (isPastRow) return <></>;
-  return <Row {...props} />;
-}
+// const unavailableDates = december
+//   .filter(day => !fromBack.includes(day))
+//   .map(day => new Date(day));
+
+// const disableDay = unavailableDates;
 
 export default function Calendar(props) {
+  const { params } = props;
   const [selected, setSelected] = React.useState('');
+  const [dayData, setDayData] = React.useState([]);
+  useEffect(() => {
+    fetch(`http://10.58.52.222:3000/calander/${params.id}`)
+      .then(res => res.json())
+      .then(data => {
+        setDayData(data.data[0].lectureDate);
+      });
+  }, []);
+
+  function getAllDaysInMonth(year, month) {
+    const date = new Date(year, month, 1);
+    const dates = [];
+    while (date.getMonth() === month) {
+      dates.push(
+        new Date(date).toISOString().slice(0, 10).replaceAll('-', ',')
+      );
+      date.setDate(date.getDate() + 1);
+    }
+    return dates;
+  }
+  const date = new Date('2022-12-01');
+  const december = getAllDaysInMonth(date.getFullYear(), date.getMonth());
+  const fromBack = dayData.map(obj => obj.lectureDate);
+
+  const unavailableDates = december
+    .filter(day => !fromBack.includes(day))
+    .map(day => new Date(day));
+
+  const disableDay = unavailableDates;
 
   let footer = <p></p>;
   if (selected) {
     props.setReservation('예약하기');
+
     footer = (
       <p className="date">
         날짜를 선택하였습니다. {format(selected, 'yyyy-MM-dd')}.
@@ -29,7 +68,11 @@ export default function Calendar(props) {
   }
   if (!selected) {
     props.setReservation('날짜를 선택해주세요.');
+    props.setDay('');
   }
+  useEffect(() => {
+    localStorage.setItem('date', selected);
+  }, [selected]);
 
   return (
     <>
@@ -45,10 +88,8 @@ export default function Calendar(props) {
         selected={selected}
         onSelect={setSelected}
         footer={footer}
-        hidden={isPastDate}
-        components={{ Row: OnlyFutureRow }}
         fromDate={new Date()}
-        showOutsideDays
+        disabled={disableDay}
       />
     </>
   );
