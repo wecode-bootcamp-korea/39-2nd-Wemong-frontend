@@ -58,7 +58,7 @@ const LoginBox = styled.div`
   ${variables.flex}
   flex-direction: column;
   gap: 20px;
-  ${variables.absoluteCenter}
+  margin: auto;
 `;
 
 const KakaoLoginBtn = styled.img`
