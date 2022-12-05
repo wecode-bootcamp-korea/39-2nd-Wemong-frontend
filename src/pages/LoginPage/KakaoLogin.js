@@ -8,7 +8,7 @@ const KakaoLogin = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`${SERVER_API}`, {
+    fetch('http://10.58.52.222:3000/auth/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',

@@ -21,10 +21,10 @@ const Carousel = () => {
     slidesToShow: 2,
   };
 
-  console.log(carouselData);
+  // console.log(carouselData);
 
   useEffect(() => {
-    fetch(`http://10.58.52.211:3000/lectures?${url}`)
+    fetch(`http://10.58.52.222:3000/lectures?${url}`)
       .then(response => response.json())
       .then(data => setCarouselData(data.lectures));
   }, []);
@@ -52,10 +52,7 @@ const Mink = styled.a`
 const Box = styled.div`
   z-index: 10;
   width: 1107px;
-<<<<<<< HEAD
-=======
   background-color: white;
->>>>>>> 51aa02a (modify:머지전 맞춰보고 경로등 수정)
 `;
 
 const CarouselStyle = styled.div`
@@ -72,11 +69,8 @@ const Img = styled.img`
 `;
 
 const Title = styled.div`
-<<<<<<< HEAD
-=======
   font-size: 1rem;
   font-weight: 900;
->>>>>>> 51aa02a (modify:머지전 맞춰보고 경로등 수정)
   &:hover {
     cursor: pointer;
   }

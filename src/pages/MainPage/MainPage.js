@@ -28,7 +28,7 @@ const MainPage = () => {
   const priceClose = () => {
     setPriceOpen(!priceOpen);
   };
-  console.log(lectures);
+
   // console.log(data);
   // useEffect(() => {
   //   fetch('/data/lectures.json')
@@ -36,7 +36,7 @@ const MainPage = () => {
   //     .then(result => setLectures(result));
   // }, []);
   useEffect(() => {
-    fetch(`http://10.58.52.211:3000/lectures?${url}`, {
+    fetch(`http://10.58.52.222:3000/lectures?${url}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -49,11 +49,11 @@ const MainPage = () => {
   }, [searchParams]);
 
   const applyFilter = () => {
-    console.log(min);
-    console.log(max);
-    console.log(date);
+    // console.log(min);
+    // console.log(max);
+    // console.log(date);
     fetch(
-      `http://10.58.52.211:3000/lectures?${url}&date=${date}&minPrice=${
+      `http://10.58.52.222:3000/lectures?${url}&date=${date}&minPrice=${
         min * 10000
       }&maxPrice=${max * 10000}`,
       {
@@ -120,8 +120,8 @@ const MainPage = () => {
   });
   const { min, max } = pricerange;
 
-  console.log(date);
-  console.log(min);
+  // console.log(date);
+  // console.log(min);
 
   return (
     <MainBody>

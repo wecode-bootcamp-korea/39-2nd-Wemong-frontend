@@ -17,6 +17,7 @@ const Calendar = props => {
   const [selected, setSelected] = React.useState(
     new Date(localStorage.getItem('date'))
   );
+
   let footer = <p></p>;
   if (selected) {
     props.setReservation('예약하기');

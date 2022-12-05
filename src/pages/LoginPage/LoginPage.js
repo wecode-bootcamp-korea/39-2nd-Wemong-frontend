@@ -53,6 +53,8 @@ const Logo = styled.div`
 `;
 
 const LoginBox = styled.div`
+  padding-top: 480px;
+  padding-bottom: 280px;
   width: 400px;
   height: 400px;
   ${variables.flex}

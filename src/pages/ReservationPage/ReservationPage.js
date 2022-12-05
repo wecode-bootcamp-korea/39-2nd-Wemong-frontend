@@ -52,7 +52,7 @@ const ReservationPage = () => {
           // 결제 수단
           // 결제 정보
           amount: `${price}`,
-          orderId: 'AmeJ5dqw3jztYR211nWZV',
+          orderId: 'pe8D3rg0T526Ja0Q-bm8R',
           orderName: `${lectureTitle} (lectureTimeOptionId:${lectureTimeOptionId})`,
           customerName: '박토스',
           successUrl: 'http://localhost:3000/reservationsuccess',
@@ -115,7 +115,7 @@ const ReservationPage = () => {
         </ClassData>
         <PaymentButtonArea>
           <PaymentButton onClick={handleKakaoPay}>
-            kakao<span className="pay">pay</span> &nbsp;
+            toss<span className="pay">pay</span> &nbsp;
             <span className="message">결제하기</span>
           </PaymentButton>
         </PaymentButtonArea>
@@ -127,6 +127,7 @@ const ReservationPage = () => {
 const ReservationPageContainer = styled.div`
   ${variables.flex('row', 'center', 'center')};
   height: 60vh;
+  padding: 390px 0;
 `;
 
 const DateSet = styled.div`
@@ -193,8 +194,8 @@ const PaymentButton = styled.button`
   width: 20rem;
   height: 4rem;
   font-size: 1.5rem;
-  background-color: #ffdf00;
-  color: #1e1e1e;
+  background-color: #003ff9;
+  color: white;
   border: none;
   border-radius: 0.5rem;
 
