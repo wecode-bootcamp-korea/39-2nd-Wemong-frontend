@@ -1,7 +1,13 @@
 import React from 'react';
+import CarouselComponents from '../../components/Nav/CarouselComponents';
 
 const MainPage = () => {
-  return <div>console.log</div>;
+  return (
+    <>
+      <CarouselComponents />
+      <div>MainPage</div>
+    </>
+  );
 };
 
 export default MainPage;
