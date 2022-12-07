@@ -13,7 +13,7 @@ const DitailLecture = props => {
             <Text>
               지금 회원가입하면 <SText>10만원</SText> 쿠폰팩을 드려요!
             </Text>
-            <Link to={'/signup'}>
+            <Link to={'/login'}>
               <Coupon>
                 쿠폰받기<i class="fa-solid fa-download"></i>
               </Coupon>
