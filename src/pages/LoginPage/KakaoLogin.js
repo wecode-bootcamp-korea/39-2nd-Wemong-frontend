@@ -19,12 +19,10 @@ const KakaoLogin = () => {
     })
       .then(response => response.json())
       .then(data => {
-        console.log(data);
         localStorage.setItem('token', data.token);
-        navigate('/');
+        navigate('/lectures');
       });
   });
-  return console.log(CODE);
 };
 
 export default KakaoLogin;
