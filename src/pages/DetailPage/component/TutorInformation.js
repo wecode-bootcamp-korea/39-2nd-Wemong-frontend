@@ -1,12 +1,13 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-const TutorInformation = () => {
+const TutorInformation = props => {
+  const { lecturerName } = props;
   return (
     <TutorBody>
       <TutorName>
         <MasterTag>Master</MasterTag>
-        <TutorNameText>낮잠장인</TutorNameText>
+        <TutorNameText>{lecturerName}</TutorNameText>
       </TutorName>
       <TutorImg src="https://post-phinf.pstatic.net/MjAyMDEyMTdfMTAz/MDAxNjA4MTk2MTcyMzI1.oxAf159E8aW1OPtVghVgO5jM1B5V5uDLwGli_zdRl9Ag.67-N7Cx5aa1-85FReTd1Eu-F32_Prmox7Ihq7_cKkv8g.JPEG/cute-cats-sleeping-01-2.jpg?type=w1200"></TutorImg>
       <TutorTime>

@@ -5,23 +5,26 @@ import { useEffect, useState } from 'react';
 import NoComment from './NoComment';
 import CommentBox from './CimmentBox';
 
-const Review = () => {
+const Review = props => {
+  const { params } = props;
   const ARRAY = [0, 1, 2, 3, 4];
   const as = 2;
   const [userComment, setUserComment] = useState([]);
   const [stars, setStars] = useState([false, false, false, false, false]);
-  const [averageStar, setAverageStar] = useState(3);
+  const [averageStar, setAverageStar] = useState(props.AVGrating);
   const [commentDropBox, setCommentDropBox] = useState(false);
 
   useEffect(() => {
-    fetch('/data/userInfoData.json')
+    fetch(`http://10.58.52.222:3000/lectures/${params.id}`)
       .then(res => res.json())
-      .then(data => setUserComment(data));
+      .then(data => {
+        setUserComment(data.data[0].review);
+      });
   }, []);
 
   useEffect(() => {
-    Average(as);
-  }, []);
+    Average(props.AVGrating - 1);
+  }, [props]);
 
   const Average = as => {
     let startAverage = [...stars];
@@ -51,7 +54,7 @@ const Review = () => {
             );
           })}
         </StarsBody>
-        <StatsText>{averageStar}.0</StatsText>
+        <StatsText>{props.AVGrating}.0</StatsText>
         <StatsText>| {userComment.length}개의 평가</StatsText>
       </ReviewBody>
       <StartCommentBody>
