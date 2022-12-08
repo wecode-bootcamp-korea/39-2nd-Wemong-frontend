@@ -8,7 +8,6 @@ import ReservationPage from './pages/ReservationPage/ReservationPage';
 import MyPage from './pages/MyPage/MyPage';
 import Nav from './components/Nav/Nav';
 import Footer from './components/Footer/Footer';
-import MainPage from './pages/MainPage/MainPage';
 import KakaoLogin from './pages/LoginPage/KakaoLogin';
 
 const Router = () => {
@@ -19,7 +18,7 @@ const Router = () => {
         <Route path="/" element={<MainPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignUpPage />} />
-        <Route path="/detail/:id" element={<DetailPage />} />
+        <Route path="/lectures/:id" element={<DetailPage />} />
         <Route path="/reservation" element={<ReservationPage />} />
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/KakaoLogin" element={<KakaoLogin />} />

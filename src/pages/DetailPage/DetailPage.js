@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import TutorInformation from './component/TutorInformation';
 import DitailLecture from './component/DitailLecture';
@@ -11,6 +11,31 @@ const DetailPage = () => {
   const categoryRef = useRef(null);
   const [sclloEv, setSclloEv] = useState('');
   const [reservation, setReservation] = useState('날짜를 선택해주세요.');
+  const [day, setDay] = useState();
+  const [data, setData] = useState([]);
+  const params = useParams();
+
+  useEffect(() => {
+    fetch(`http://10.58.52.222:3000/lectures/${params.id}`)
+      .then(res => res.json())
+      .then(data => {
+        setData(data.data[0]);
+      });
+  }, []);
+
+  const {
+    lectureText,
+    lectureTitle,
+    price,
+    lecturerName,
+    mainCategory,
+    subcategory,
+    images,
+    review,
+    AVGrating,
+  } = data;
+
+  const myPrice = price;
 
   useEffect(() => {
     if (sclloEv === 'Information') {
@@ -20,7 +45,7 @@ const DetailPage = () => {
         behavior: 'smooth',
         block: 'center',
       });
-    } else {
+    } else if (sclloEv === 'Evaluation') {
       window.scrollTo({ top: 2300, left: 0, behavior: 'smooth' });
     }
   }, [sclloEv]);
@@ -35,12 +60,32 @@ const DetailPage = () => {
     setButtonClick(e.target.title);
   };
 
+  const categoryEnum = Object.freeze({
+    1: '요리',
+    2: '입시',
+    3: 'IT',
+  });
+
+  const SubCategory = Object.freeze({
+    1: '한식',
+    2: '중식',
+    3: '양식',
+    4: '국어',
+    5: '영어',
+    6: '수학',
+    7: 'mos',
+    8: '코딩',
+    9: '영상편집',
+  });
+
   return (
     <DetailPageBody>
       <DetailBody>
         <DetailImgBody>
-          <DetailCatgory>카테고리>카테고리</DetailCatgory>
-          <DitailImg src="https://mblogthumb-phinf.pstatic.net/MjAxODExMDlfMjU2/MDAxNTQxNjk5Mjc3Nzk2.F08PGaHbJ_jxls7K9Plo7eChmL8DT-GTngN8KQ_feRwg.Sw9WPBXCRiyNUE2yBuhrlMyV-1MxLaPnZPMJRL2ZgTgg.JPEG.bluezip17/awesomelycute_com_20181109_024501.jpg?type=w800"></DitailImg>
+          <DetailCatgory>
+            {categoryEnum[mainCategory]}/{SubCategory[subcategory]}
+          </DetailCatgory>
+          <DitailImg src={images}></DitailImg>
           <DitailCategory>
             <Category
               onClick={sclloClick}
@@ -64,8 +109,16 @@ const DetailPage = () => {
               서비스 평가
             </Category>
           </DitailCategory>
-          <DitailLecture categoryRef={categoryRef}></DitailLecture>
-          <Review></Review>
+          <DitailLecture
+            categoryRef={categoryRef}
+            price={price}
+          ></DitailLecture>
+          <Review
+            review={review}
+            data={data}
+            AVGrating={AVGrating}
+            params={params}
+          ></Review>
         </DetailImgBody>
       </DetailBody>
       <DetailContents>
@@ -73,7 +126,7 @@ const DetailPage = () => {
           <i class="fa-solid fa-share-nodes"></i>
           <i class="fa-regular fa-heart "></i>
         </Icons>
-        <Title>잠못드는 당신을위한 맞춤강의!</Title>
+        <Title>{lectureTitle}</Title>
         <MenuBody>
           <Rating
             title="STANDARD"
@@ -98,22 +151,19 @@ const DetailPage = () => {
           </Rating>
         </MenuBody>
         <Contents>
-          <Price>70,000원</Price>
+          <Price>{myPrice}</Price>
           <SinupCoupon>
             <Text>
               지금 회원가입하면 <SText>10만원</SText> 쿠폰팩을 드려요!
             </Text>
-            <Link to={'/signup'}>
+            <Link to={'/login'}>
               <Coupon>
                 쿠폰받기<i class="fa-solid fa-download"></i>
               </Coupon>
             </Link>
           </SinupCoupon>
-          <Explanation>맨날 지각하는 나를위한 잠잘자는방법</Explanation>
-          <Explanations>
-            수면제 + 잠옷 + 잠잘오는이불 + 전기장판 + 알람제공 + 일찍일어나기
-            이벤트
-          </Explanations>
+          <Explanation>{lectureTitle}</Explanation>
+          <Explanations>{lectureText}</Explanations>
           <Checklist>
             수면제제공 <i class="fa-solid fa-check"></i>
           </Checklist>
@@ -135,7 +185,11 @@ const DetailPage = () => {
           <DetailCheck>
             예약가능일수<TowDetailCheck>1일</TowDetailCheck>
           </DetailCheck>
-          <Calendar setReservation={setReservation}></Calendar>
+          <Calendar
+            setReservation={setReservation}
+            setDay={setDay}
+            params={params}
+          ></Calendar>
           <Link to={'/reservation'}>
             <BigButton buttonColor={buttonColor}>{reservation}</BigButton>
           </Link>
@@ -146,7 +200,7 @@ const DetailPage = () => {
             예약이 완료된 이후에 전문가에게 결제대금이 전달됩니다.
           </PaymentP>
         </Payment>
-        <TutorInformation></TutorInformation>
+        <TutorInformation lecturerName={lecturerName}></TutorInformation>
       </DetailContents>
     </DetailPageBody>
   );

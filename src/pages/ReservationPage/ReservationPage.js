@@ -4,7 +4,7 @@ import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import variables from '../../styles/variables';
 
-const ReservationPage = () => {
+const ReservationPage = ({ location }) => {
   const [date, setDate] = useState(new Date());
 
   return (
