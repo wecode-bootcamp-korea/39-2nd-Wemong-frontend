@@ -3,7 +3,6 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import styled from 'styled-components';
-
 import { useLocation } from 'react-router-dom';
 
 const Carousel = () => {
@@ -52,10 +51,7 @@ const Mink = styled.a`
 const Box = styled.div`
   z-index: 10;
   width: 1107px;
-<<<<<<< HEAD
-=======
   background-color: white;
->>>>>>> 51aa02a (modify:머지전 맞춰보고 경로등 수정)
 `;
 
 const CarouselStyle = styled.div`
@@ -72,11 +68,8 @@ const Img = styled.img`
 `;
 
 const Title = styled.div`
-<<<<<<< HEAD
-=======
   font-size: 1rem;
   font-weight: 900;
->>>>>>> 51aa02a (modify:머지전 맞춰보고 경로등 수정)
   &:hover {
     cursor: pointer;
   }

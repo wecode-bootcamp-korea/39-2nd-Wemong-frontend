@@ -6,7 +6,7 @@ const ReviewComment = props => {
   const [score, setScore] = useState([false, false, false, false, false]);
 
   useEffect(() => {
-    starScore(data.score - 1);
+    starScore(data.rating - 1);
   }, []);
 
   const starScore = index => {
@@ -20,9 +20,9 @@ const ReviewComment = props => {
   return (
     <CommentBody>
       <UserProfile>
-        <UserImg src={data.images}></UserImg>
+        <UserImg src="https://kmong.com/img/tools/main_user_gray.png"></UserImg>
         <UserInfo>
-          <UserName>{data.userName}</UserName>
+          <UserName>{data.reviewUser}</UserName>
           <UserStarts>
             {ARRAY.map((el, index) => (
               <FaStar
@@ -31,11 +31,11 @@ const ReviewComment = props => {
                 className={score[el] && 'yellowStar'}
               ></FaStar>
             ))}{' '}
-            {data.score}.0
+            {data.rating}.0
           </UserStarts>
         </UserInfo>
       </UserProfile>
-      <UserComment>{data.userComment}</UserComment>
+      <UserComment>{data.reviewText}</UserComment>
     </CommentBody>
   );
 };
