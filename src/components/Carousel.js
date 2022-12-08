@@ -3,18 +3,13 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import styled from 'styled-components';
-<<<<<<< HEAD
 
-const Carousel = () => {
-  const [carouselData, setCarouselData] = useState([]);
-=======
 import { useLocation } from 'react-router-dom';
 
 const Carousel = () => {
   const [carouselData, setCarouselData] = useState([]);
   const location = useLocation();
   const url = location.search.split('?')[1];
->>>>>>> 51aa02a (modify:머지전 맞춰보고 경로등 수정)
 
   const settings = {
     arrow: true,
