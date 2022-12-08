@@ -1,35 +1,120 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
-import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css';
+// import Calendar from 'react-calendar';
+// import 'react-calendar/dist/Calendar.css';
+import Calendar from './Calendar';
 import variables from '../../styles/variables';
+import { loadTossPayments } from '@tosspayments/payment-sdk';
 
-const ReservationPage = ({ location }) => {
-  const [date, setDate] = useState(new Date());
+const ReservationPage = () => {
+  const [lectureData, setLectureData] = useState([]);
+  const [lectureTimeOptionId, setLectureTimeOptionId] = useState(0);
+  const [lectureDate, setLectureDate] = useState('');
+  const [reservation, setReservation] = useState('');
+  // const lectureId = 2;
+  const { id } = useParams();
+
+  // 백에서 상품 디테일 데이터 수신
+  useEffect(() => {
+    fetch(
+      `http://10.58.52.222:3000/calander/10
+    `,
+      {
+        method: 'GET',
+      }
+    )
+      // fetch(`/data/reservationData.json`, {
+      //   method: 'GET',
+      // })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        setLectureData(data.data[0]);
+        setLectureTimeOptionId(data.data[0].lectureDate[0].lectureTimeOptionId);
+        setLectureDate(data.data[0].lectureDate[0].lectureDate);
+      });
+  }, []);
+
+  // 백에서 받은 데이터 객체 구조 분해 할당
+  const { lectureTitle, lecturerName, price, images } = lectureData;
+
+  console.log(lectureDate);
+  console.log(lectureTimeOptionId);
+
+  // 토스페이 결제 기능
+  const clientKey = `${process.env.REACT_APP_CLIENT_KEY}`;
+
+  const handleKakaoPay = () => {
+    loadTossPayments(clientKey).then(tossPayments => {
+      tossPayments
+        .requestPayment('카드', {
+          // 결제 수단
+          // 결제 정보
+          amount: `${price}`,
+          orderId: 'AmeJ5dqw3jztYR211nWZV',
+          orderName: `${lectureTitle} (lectureTimeOptionId:${lectureTimeOptionId})`,
+          customerName: '박토스',
+          successUrl: 'http://localhost:3000/reservationsuccess',
+          failUrl: 'http://localhost:3000/reservation',
+          flowMode: 'DIRECT',
+          easyPay: '토스페이',
+        })
+        .catch(function (error) {
+          if (error.code === 'USER_CANCEL') {
+            // 결제 고객이 결제창을 닫았을 때 에러 처리
+          } else if (error.code === 'INVALID_CARD_COMPANY') {
+            // 유효하지 않은 카드 코드에 대한 에러 처리
+          }
+        });
+    });
+  };
+
+  // 토스 페이 안될 때 대안
+  // const handlePay = () = {
+  //   fetch(``, {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type':
+  //     },
+  //     body: '',
+  //   })
+  //     .then(response => response.json())
+  //     .then(data => {
+  //       console.log(data);
+  //     });
+  // }
 
   return (
     <ReservationPageContainer>
       <DateSet>
         <Calendar
           className="calendar"
-          onChange={setDate}
-          date={date}
+          setReservation={setReservation}
         ></Calendar>
+        <CalendarInfo></CalendarInfo>
       </DateSet>
       <ReservationForm>
         <ClassData>
-          <ClassPicture alt="클래스_사진"></ClassPicture>
+          <ClassPicture
+            width="100"
+            src={images}
+            alt="클래스_사진"
+          ></ClassPicture>
           <Names>
             <ClassName>
-              <span className="class-name">상품명</span>
+              <span className="class-name">{lectureTitle}</span>
             </ClassName>
             <TutorName>
-              <span className="tutor-name">강사 이름</span>
+              <span className="tutor-name">{lecturerName}</span>
             </TutorName>
+            <ClassPrice>
+              <span className="class-price">{price}원</span>
+            </ClassPrice>
           </Names>
         </ClassData>
         <PaymentButtonArea>
-          <PaymentButton>
+          <PaymentButton onClick={handleKakaoPay}>
             kakao<span className="pay">pay</span> &nbsp;
             <span className="message">결제하기</span>
           </PaymentButton>
@@ -49,8 +134,12 @@ const DateSet = styled.div`
   margin-right: 5rem;
 
   .calendar {
-    width: 20rem;
+    margin-right: 20rem;
   }
+`;
+
+const CalendarInfo = styled.div`
+  ${variables.flex('row', 'center', 'center')}
 `;
 
 const ReservationForm = styled.div`
@@ -85,6 +174,14 @@ const TutorName = styled.div`
   .tutor-name {
     font-size: larger;
     font-weight: 400;
+  }
+`;
+
+const ClassPrice = styled.div`
+  margin-top: 1rem;
+  .class-price {
+    font-size: x-large;
+    font-weight: 600;
   }
 `;
 
