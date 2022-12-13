@@ -43,7 +43,7 @@
 
 ||페이지 및 기능 구현|설명|담당 개발자|
 |:-:|:--------------:|:---:|:--------:|
-|Login<br>SignUp|<img src="public/images/loginSignup.gif" width="300px">|- 로그인 회원가입<br> 레이아웃<br>-회원가입시<br>바로 로그인|홍석현|
+|Login<br>SignUp|<img src="public/images/loginSignup.gif" width="300px">|- 로그인 회원가입<br> 레이아웃<br>-회원가입시<br>바로 로그인<br>로그아웃기능|홍석현|
 |Search|<img src="public/images/searchFilter.gif" width="300px">|-강의 검색창 <br>레이아웃<br>-검색 필터링<br> 기능구현 |홍석현|
 |Filter|<img src="public/images/productfilter.gif" width="300px">|- 필터링 조건에따라<br> 쿼리스트링 적용|홍석현|
 |Product List|<img src="public/images/productlist.gif" width="300px">|- 강의 리스트 <br>자동 생성|김호준|
