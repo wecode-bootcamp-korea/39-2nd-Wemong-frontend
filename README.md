@@ -2,7 +2,7 @@
 
 - 모델링 사이트 -> 크몽
 - 강사로서 유저로서 강의를 소비 할 수 도 등록 할 수 도있는 Wemong
-- 원하는 강의를 한번에 쉽게 찾을 수 있는 
+- 원하는 강의를 한번에 쉽게 찾을 수 있는
 
 # 프로젝트 일정
 
@@ -21,7 +21,7 @@
 # 프로젝트 선정이유
 
 - 크몽의 단순 프리랜서를 구매하는 플로우가 아닌 프리랜서 혹은 강사와 1 on 1 예약을 하고 강의를 통해 자신이 필요로 하는 제품을 직접 만들 수 있는 기술을 배워보는 사이트를 만들고 싶었습니다.
-- 평소 크몽에서 개선 해보고싶은 부분을 직접 개선해보고 기획을 변경하여 팀만의 사이트를 만들어보고자 선정했습니다. 
+- 평소 크몽에서 개선 해보고싶은 부분을 직접 개선해보고 기획을 변경하여 팀만의 사이트를 만들어보고자 선정했습니다.
 
 # 참여 개발자
 
@@ -40,14 +40,14 @@
 <img src="https://img.shields.io/badge/-HTML-orange">
 <img src="https://img.shields.io/badge/-Prettier-rainbow">
 
-
-||페이지 및 기능 구현|설명|담당 개발자|
-|:-:|:--------------:|:---:|:--------:|
-|Login<br>SignUp|<img src="public/images/loginSignup.gif" width="300px">|- 로그인 회원가입<br> 레이아웃<br>-회원가입시<br>바로 로그인<br>-로그아웃기능|홍석현|
-|Search|<img src="public/images/searchFilter.gif" width="300px">|-강의 검색창 <br>레이아웃<br>-검색 필터링<br> 기능구현 |홍석현|
-|Filter|<img src="public/images/productfilter.gif" width="300px">|- 필터링 조건에따라<br> 쿼리스트링 적용|홍석현|
-|Product List|<img src="public/images/productlist.gif" width="300px">|- 강의 리스트 <br>자동 생성|김호준|
-|Main Page|<img src="public/images/mainpage.gif" width="300px">|- 메인페이지 레이아웃|김호준|
-|ProductDetail|<img src="public/images/clientoption.gif" width="300px">|- 강의 상세페이지 강의 선택<br> 조건 서버에 전송|윤수민|
-|Cart|<img src="public/images/cart.gif" width="300px">|- 선택상품 삭제<br>- 토스 페이먼츠|이상윤|
-|Review|<img src="public/images/review.gif" width="300px">|- |이상윤|
+|                 |                    페이지 및 기능 구현                    |                                     설명                                      | 담당 개발자 |
+| :-------------: | :-------------------------------------------------------: | :---------------------------------------------------------------------------: | :---------: |
+| Login<br>SignUp |  <img src="public/images/loginSignup.gif" width="300px">  | - 로그인 회원가입<br> 레이아웃<br>-회원가입시<br>바로 로그인<br>-로그아웃기능 |   홍석현    |
+|     Search      | <img src="public/images/searchFilter.gif" width="300px">  |            -강의 검색창 <br>레이아웃<br>-검색 필터링<br> 기능구현             |   홍석현    |
+|     Filter      | <img src="public/images/productfilter.gif" width="300px"> |                    - 필터링 조건에따라<br> 쿼리스트링 적용                    |   홍석현    |
+|  Product List   |  <img src="public/images/productlist.gif" width="300px">  |                          - 강의 리스트 <br>자동 생성                          |   김호준    |
+|    Main Page    |   <img src="public/images/mainpage.gif" width="300px">    |                             - 메인페이지 레이아웃                             |   김호준    |
+|    Main Page    |   <img src="public/images/mainpage.gif" width="300px">    |                     - 달력 필터 기능 <br> 가격 필터 기능                      |   김호준    |
+|  ProductDetail  | <img src="public/images/clientoption.gif" width="300px">  |               - 강의 상세페이지 강의 선택<br> 조건 서버에 전송                |   윤수민    |
+|      Cart       |     <img src="public/images/cart.gif" width="300px">      |                      - 선택상품 삭제<br>- 토스 페이먼츠                       |   이상윤    |
+|     Review      |    <img src="public/images/review.gif" width="300px">     |                                       -                                       |   이상윤    |
