@@ -2,104 +2,83 @@ import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { NavCategoryList, NavList } from './NavList';
-// import Navdropdown from './Navdropdown';
-// import NavList from './NavList';
+
 const Nav = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const token = localStorage.getItem('token');
 
   return (
-    <>
-      <DropContainer>
-        <NavBody>
-          <Container>
-            <NavTop onMouseEnter={() => setMenuOpen(false)}>
-              <Logo href={'/lectures'}>WeMong</Logo>
-              <SearchWrap>
-                <SearchInput placeholder="강의를 검색해 보세요"></SearchInput>
-                <SearchIcon>
-                  <i className="fa-solid fa-magnifying-glass"></i>
-                </SearchIcon>
-              </SearchWrap>
-              <NavTopRight>
-                {token ? (
-                  <Login
-                    href={'/login'}
-                    onClick={() => {
-                      localStorage.removeItem('token');
-                      window.location.reload();
-                    }}
-                  >
-                    로그아웃
-                  </Login>
-                ) : (
-                  <Login href={'/login'}>로그인</Login>
-                )}
-              </NavTopRight>
-            </NavTop>
-            <NavBottom>
-              <NavBottomWrap onMouseEnter={() => setMenuOpen(true)}>
-                {NavCategoryList.map(list => {
-                  return (
-                    // <Link to={list.path}>
-                    <Cooking href={list.path} key={list.id}>
-                      {list.title}
-                    </Cooking>
-                    // </Link>
-                  );
-                })}
-                {/* <Cooking>요리</Cooking>
+    <DropContainer>
+      <NavBody>
+        <Container>
+          <NavTop onMouseEnter={() => setMenuOpen(false)}>
+            <Logo href={'/lectures'}>WeMong</Logo>
+            <SearchWrap>
+              <SearchInput placeholder="강의를 검색해 보세요"></SearchInput>
+              <SearchIcon>
+                <i className="fa-solid fa-magnifying-glass"></i>
+              </SearchIcon>
+            </SearchWrap>
+            <NavTopRight>
+              {token ? (
+                <Login
+                  href={'/login'}
+                  onClick={() => {
+                    localStorage.removeItem('token');
+                    window.location.reload();
+                  }}
+                >
+                  로그아웃
+                </Login>
+              ) : (
+                <Login href={'/login'}>로그인</Login>
+              )}
+            </NavTopRight>
+          </NavTop>
+          <NavBottom>
+            <NavBottomWrap onMouseEnter={() => setMenuOpen(true)}>
+              {NavCategoryList.map(list => {
+                return (
+                  // <Link to={list.path}>
+                  <Cooking href={list.path} key={list.id}>
+                    {list.title}
+                  </Cooking>
+                  // </Link>
+                );
+              })}
+              {/* <Cooking>요리</Cooking>
                  <Study>입시</Study>
                  <It>IT</It> */}
-              </NavBottomWrap>
-            </NavBottom>
-          </Container>
-        </NavBody>
-        {menuOpen && (
-          <NavDropWrap onMouseLeave={() => setMenuOpen(false)}>
-            {/* {NavList.map(list =>{
+            </NavBottomWrap>
+          </NavBottom>
+        </Container>
+      </NavBody>
+      {menuOpen && (
+        <NavDropWrap onMouseLeave={() => setMenuOpen(false)}>
+          {/* {NavList.map(list =>{
               return(     
               )
             })} */}
-            <CookingMenu>
-              {NavList.map(subList => {
-                return (
-                  <ul key={subList.id}>
-                    {subList.list.map(list => {
-                      return (
-                        <li key={list.id}>
-                          <KoreanFood href={list.path}>
-                            {list.SubCategory}
-                          </KoreanFood>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                );
-              })}
-              {/* {console.log(NavList)} */}
-              {/* <KoreanFood>한식</KoreanFood>
-              <ChineseFood>중식</ChineseFood>
-              <EuropeanFood>양식</EuropeanFood> */}
-            </CookingMenu>
-            {/* <StudyMenu>
-              <Korean>국어</Korean>
-              <English>영어</English>
-              <Mathematics>수학</Mathematics>
-            </StudyMenu>
-            <ItMenu>
-              <Programming>프로그래밍</Programming>
-              <Video>영상편집</Video>
-              <Mos>MOS</Mos>
-            </ItMenu> */}
-          </NavDropWrap>
-        )}
-      </DropContainer>
-      {/* <Carousel>
-        <CarouselImg></CarouselImg>
-      </Carousel>
-      <FilterContainer></FilterContainer> */}
-    </>
+          <CookingMenu>
+            {NavList.map(subList => {
+              return (
+                <ul key={subList.id}>
+                  {subList.list.map(list => {
+                    return (
+                      <li key={list.id}>
+                        <KoreanFood href={list.path}>
+                          {list.SubCategory}
+                        </KoreanFood>
+                      </li>
+                    );
+                  })}
+                </ul>
+              );
+            })}
+          </CookingMenu>
+        </NavDropWrap>
+      )}
+    </DropContainer>
   );
 };
 
@@ -284,7 +263,6 @@ const NavDropWrap = styled.div`
   top: 190px;
   display: flex;
   background-color: white;
-  /* display: ${props => (props.menuOpen ? `flex` : `none`)}; */
 `;
 
 const CookingMenu = styled.div`
@@ -298,18 +276,16 @@ const CookingMenu = styled.div`
 
 const KoreanFood = styled.a`
   display: block;
-  /* margin: auto; */
+
   padding-bottom: 20px;
   color: black;
 `;
 
 const ChineseFood = styled.div`
-  /* margin: auto; */
   padding-bottom: 20px;
 `;
 
 const EuropeanFood = styled.div`
-  /* margin: auto; */
   padding-bottom: 20px;
 `;
 

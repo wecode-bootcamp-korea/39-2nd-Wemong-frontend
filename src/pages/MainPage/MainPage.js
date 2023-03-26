@@ -20,6 +20,12 @@ const MainPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const url = location.search.split('?')[1];
 
+  const [pricerange, setPriceRange] = useState({
+    min: 0,
+    max: 10,
+  });
+  const { min, max } = pricerange;
+
   const calendarClose = () => {
     setCalendarOpen(!calendarOpen);
   };
@@ -35,6 +41,8 @@ const MainPage = () => {
   //     .then(response => response.json())
   //     .then(result => setLectures(result));
   // }, []);
+
+  //강의 리스트 불러오기
   useEffect(() => {
     fetch(`http://10.58.52.222:3000/lectures?${url}`, {
       method: 'GET',
@@ -48,10 +56,8 @@ const MainPage = () => {
       });
   }, [searchParams]);
 
+  //가격 필터
   const applyFilter = () => {
-    // console.log(min);
-    // console.log(max);
-    // console.log(date);
     fetch(
       `http://10.58.52.222:3000/lectures?${url}&date=${date}&minPrice=${
         min * 10000
@@ -72,9 +78,6 @@ const MainPage = () => {
   // DayPicker
   const [selected, setSelected] = useState(new Date());
   const [date, setDate] = useState('');
-  // console.log(selected);
-
-  // console.log(fullDate);
 
   const fullDate = () => {
     const fullDate = new Date(
@@ -86,17 +89,14 @@ const MainPage = () => {
     setDate(fullDate);
   };
 
-  // console.log(date);
-
   useEffect(() => {
+    //초기에 날짜가 선택되어 있지 않거나 선택을 해제했을시 생기는 오류를 해결
     if (selected === undefined) {
       return;
     } else {
       fullDate();
     }
   }, [selected]);
-
-  // const applyCalendar = () => {};
 
   let footer = '';
   if (selected) {
@@ -113,15 +113,6 @@ const MainPage = () => {
       </>
     );
   }
-
-  const [pricerange, setPriceRange] = useState({
-    min: 0,
-    max: 10,
-  });
-  const { min, max } = pricerange;
-
-  // console.log(date);
-  // console.log(min);
 
   return (
     <MainBody>
